@@ -1,4 +1,3 @@
-// cartUtils.js
 export function productItemsEventDelegation(containers, updateCartCallback) {
   containers.forEach(container => {
     container.addEventListener('click', (event) => {
@@ -47,3 +46,10 @@ export function productItemsEventDelegation(containers, updateCartCallback) {
     });
   });
 }
+
+/*export function errorMessage(container, text){
+  const messageText = document.createElement('p');
+  messageText.textContent = text;
+  messageText.className = "text-center text-gray-500 mt-4";
+  container.appendChild(messageText);
+}*/
