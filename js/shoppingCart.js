@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Fill product information
       clone.querySelector('.product-title').textContent = item.title;
       clone.querySelector('.product-image').src = item.image || './Resources/default.png';
-      clone.querySelector('.product-price').textContent = item.price;
+      clone.querySelector('.product-price').textContent = item.price*item.quantity;
       clone.querySelector('.product-quantity').textContent = item.quantity;
 
       cartContainer.appendChild(clone);

@@ -6,13 +6,13 @@ const products = [
       {
         title: "American Coffee",
         image: "./Resources/American-Coffee.png",
-        price: "$7.00",
+        price: 7.99,
       },
-      { title: "Latte", image: "./Resources/Latte.png", price: "$10.00" },
+      { title: "Latte", image: "./Resources/Latte.png", price: 10.99 },
       {
         title: "Cappuccino",
         image: "./Resources/Cappuccino.png",
-        price: "$15.00",
+        price: 15.99,
       },
     ],
   },
@@ -22,17 +22,17 @@ const products = [
       {
         title: "Cold Brew",
         image: "./Resources/Cold-Brew.png",
-        price: "$7.00",
+        price: 7.99,
       },
       {
         title: "Chocolate Cold Brew",
         image: "./Resources/Chocolate-Cold-Brew.png",
-        price: "$10.00",
+        price: 10.99,
       },
       {
         title: "Caramel Cold Brew",
         image: "./Resources/Caramel-Cold-Brew.webp",
-        price: "$15.00",
+        price: 15.99,
       },
     ],
   },
@@ -47,14 +47,27 @@ function getTemplate() {
 }
 
 function displayItems(products, container) {
+  const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  });
+
   products.forEach((product) => {
     const template = getTemplate();
     const item = template.content.cloneNode(true);
     item.querySelector(".product-title").textContent = product.title;
     item.querySelector(".product-image").src = product.image;
-    item.querySelector(".product-price").textContent = product.price;
+    item.querySelector(".product-price").textContent  = formatPrice(product.price);
+    item.querySelector(".product-card").dataset.price = product.price;
     container.appendChild(item);
   });
+}
+
+function formatPrice(price){
+  return new Intl.NumberFormat('en-US',{
+    style: 'currency',
+    currency: 'USD',
+  }).format(price);
 }
 
 function main() {
@@ -87,10 +100,8 @@ document.addEventListener("DOMContentLoaded", main);
         let count = parseInt(counterSpan.textContent) || 0;
         if (minusBtn && count > 0) {
           count--;
-          updateCart();
         } else if (plusBtn) {
           count++;
-          updateCart();
         }
         counterSpan.textContent = count;
       }
@@ -143,11 +154,12 @@ function updateCart() {
 
   document.querySelectorAll(".product-card").forEach((card) => {
     const title = card.querySelector(".product-title")?.textContent;
-    const price = card.querySelector(".product-price")?.textContent;
+    const priceElement = card.querySelector(".product-price");
     const image = card.querySelector(".product-image")?.src;
     const selectedSize = card.dataset.selectedSize || null;
     const countSpan = card.querySelector("span");
     const count = countSpan ? parseInt(countSpan.textContent) : 0;
+    const price = parseFloat(card.dataset.price);
 
     if (title && price && count > 0 && selectedSize!= null) {
       cart.push({ title, price, image, quantity: count, size: selectedSize });
