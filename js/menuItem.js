@@ -1,3 +1,4 @@
+import {formatPrice} from './menuItemsUtils.js';
 // Your categories arrays
 const products = [
   {
@@ -61,13 +62,6 @@ function displayItems(products, container) {
     item.querySelector(".product-card").dataset.price = product.price;
     container.appendChild(item);
   });
-}
-
-function formatPrice(price){
-  return new Intl.NumberFormat('en-US',{
-    style: 'currency',
-    currency: 'USD',
-  }).format(price);
 }
 
 function main() {

@@ -47,6 +47,13 @@ export function productItemsEventDelegation(containers, updateCartCallback) {
   });
 }
 
+export function formatPrice(price){
+  return new Intl.NumberFormat('en-US',{
+    style: 'currency',
+    currency: 'USD',
+  }).format(price);
+}
+
 /*export function errorMessage(container, text){
   const messageText = document.createElement('p');
   messageText.textContent = text;
