@@ -125,6 +125,17 @@ export function eventHandler(container) {
           heartBtn.classList.add("fill-slate-400");
         }
       }
+      
+      const deleteBtn = target.closest(".delete-icon");
+      if (deleteBtn) {
+        if (!deleteBtn.classList.contains("fill-red-600")) {
+          deleteBtn.classList.remove("fill-slate-400");
+          deleteBtn.classList.add("fill-red-600");
+        } else {
+          deleteBtn.classList.remove("fill-red-600");
+          deleteBtn.classList.add("fill-slate-400");
+        }
+      }
     });
   });
 }

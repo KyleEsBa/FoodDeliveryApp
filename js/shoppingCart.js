@@ -18,8 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Fill product information
       clone.querySelector(".product-title").textContent = item.title;
-      clone.querySelector(".product-image").src =
-        item.image || "./Resources/default.png";
+      clone.querySelector(".product-image").src = item.image;
       clone.querySelector(".product-price").textContent = formatPrice(
         item.price * item.quantity
       );
