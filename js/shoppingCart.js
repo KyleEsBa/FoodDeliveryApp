@@ -36,10 +36,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     eventHandler(container);
     updateCartSummary();
+    modalActions();
   }
+
 });
 
 window.addEventListener("cartUpdated", updateCartSummary);
+
+function modalActions() {
+  let modal = document.getElementById("modal");
+  let openModalBtn = document.getElementById("openModal");
+  let closeModalBtns = [
+    document.getElementById("closeIcon"),
+    document.getElementById("closeButton"),
+  ];
+
+  function showModal() {
+    modal.classList.remove("hidden");
+  }
+
+  function hideModal() {
+    modal.classList.add("hidden");
+  }
+
+  openModalBtn.addEventListener("click", showModal);
+
+  closeModalBtns.forEach((btn) => btn.addEventListener("click", hideModal));
+
+  // Close modal when clicking outside the modal content
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal.firstElementChild) {
+      hideModal();
+    }
+  });
+}
 
 function updateCartSummary() {
   const cartData = JSON.parse(localStorage.getItem("shoppingCart")) || [];

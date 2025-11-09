@@ -149,10 +149,3 @@ function updateCart() {
   localStorage.setItem("shoppingCart", JSON.stringify(cart));
   window.dispatchEvent(new Event("cartUpdated"));
 }
-
-/*export function errorMessage(container, text){
-  const messageText = document.createElement('p');
-  messageText.textContent = text;
-  messageText.className = "text-center text-gray-500 mt-4";
-  container.appendChild(messageText);
-}*/

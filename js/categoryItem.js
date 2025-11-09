@@ -2,9 +2,9 @@
 const drinksCategories = [
   {title: 'Hot Coffe', image: './Resources/Hot-Coffee.webp', param: 'hot-coffe'},
   {title: 'Cold Coffe', image: './Resources/Cold-Coffee.webp', param: 'cold-coffe'},
-  {title: 'Protein Beverages', image: './Resources/Protein-Beverages.png', param: 'beverages'},
+  {title: 'Protein Beverages', image: './Resources/Protein-Beverages.png', param: 'protein-beverages'},
   {title: 'Refreshers', image: './Resources/Refreshers.png', param: 'refreshers'},
-  {title: 'Frappucino', image: './Resources/Frappucino.png', param: 'frappucino'},
+  {title: 'Frappucino', image: './Resources/Frappucino.png', param: 'frappuccino'},
   {title: 'Hot Chocolate', image: './Resources/Hot-Chocolate.png', param: 'hot-chocolate'}
 ];
 
